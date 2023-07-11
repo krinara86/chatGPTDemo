@@ -1,0 +1,55 @@
+API integrations are described using an XML format. This format consists of several elements, including the <apiintegration>, <api>, and <uses> tags.
+
+The root element of the XML document is <apiintegration>. This element contains all the APIs that are part of the integration. This tag includes an attribute name that uniquely identifies the integration.
+
+For example:
+
+xml
+
+<apiintegration name="integration1">
+  <!-- api elements will go here -->
+</apiintegration>
+
+Inside the <apiintegration> tag, there are one or more <api> tags. Each <api> represents an API used in the integration. An API has a name attribute which should be unique within an API integration.
+
+For example:
+
+xml
+
+<api name="node1">
+  <!-- uses elements will go here -->
+</api>
+
+Inside each <api> tag, there are one or more <uses> tags. These tags describe which other APIs this API communicates with. It has a target attribute which should match the name of another <api> element.
+
+For example:
+
+xml
+
+<uses target="node2" />
+
+This denotes that the API named "node1" uses or communicates with the API named "node2".
+
+When you put all of these elements together, you get an XML document that provides a clear picture of how the APIs in an integration interact with each other.
+
+Here is a full example:
+
+xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<apiintegration name="integration1">
+  <api name="node1">
+    <uses target="node2" />
+  </api>
+  <api name="node2">
+    <uses target="node1" />
+    <uses target="node3" />
+  </api>
+  <api name="node3">
+    <uses target="node1" />
+  </api>
+</apiintegration>
+
+In this example, there are three APIs: "node1", "node2", and "node3". The "node1" API uses "node2", "node2" uses both "node1" and "node3", and "node3" uses "node1".
+
+Please use this format for providing answers to the prompts involving API integrations. Do not use any other tag or attribute names, and ensure that all target attributes match the name of an existing <api>.

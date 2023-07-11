@@ -5,9 +5,9 @@
   </api>
   <api name="node2">
     <uses target="node1" />
+    <uses target="node3" />
   </api>
   <api name="node3">
     <uses target="node1" />
-    <uses target="node2" />
   </api>
 </apiintegration>
