@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apiintegration name="integration1">
+  <api name="node1">
+    <uses target="node2" />
+  </api>
+  <api name="node2">
+    <uses target="node1" />
+  </api>
+  <api name="node3">
+    <uses target="node1" />
+    <uses target="node2" />
+  </api>
+</apiintegration>
